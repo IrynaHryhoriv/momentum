@@ -30,9 +30,46 @@ function displayDate(){
 setInterval(displayDate,1000);
 
 
+// enter name
+
+const yourName = document.querySelector('.name');
+
+function setLocalStorageName() {
+  localStorage.setItem('name', yourName.value);
+}
+window.addEventListener('beforeunload', setLocalStorageName);
+
+function getLocalStorageName() {
+  if (localStorage.getItem('name')) {
+    yourName.value = localStorage.getItem('name');
+  }
+}
+window.addEventListener('load', getLocalStorageName);
+
+
+// slider
+
+var data = [
+    [0, 4, "Good night"], 
+    [5, 11, "Good morning"],          
+    [12, 17, "Good afternoon"],
+    [18, 24, "Good evening"]
+],
+    hr = new Date().getHours();
+
+for(var i = 0; i < data.length; i++){
+    if(hr >= data[i][0] && hr <= data[i][1]){
+        document.getElementById("greeting").innerHTML = (data[i][2]);
+    }
+}
 
 
 
+
+
+
+
+ 
 
 
 
