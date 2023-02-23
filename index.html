@@ -57,11 +57,92 @@
       <input type="text" placeholder="[enter name] " class="name" />
     </div>
   </main>
-  <footer class="footer">
-    <button class="change-quote"></button>
-    <div>
-      <div class="quote"></div>
-      <div class="author"></div>
+
+
+
+   <footer class="footer">
+    <div class="settings-container">
+      <h3 class="settings-title">Settings</h3>
+      <label for="language-select" class="language-label">Language</label>
+      <select class="language-select" id="language-select">
+        <option value="en">English</option>
+        <option value="ru">Русский</option>
+      </select>
+      <div class="photo-settings">
+        <h4 class="settings-subtitle photo-gallary">Photo Gallery</h4>
+        <label for="img-source" class="image-source-label">Image Source</label>
+        <select class="image-source-select" id="img-source">
+          <option value="github">GitHub Gallary</option>
+          <option value="unsplash">Unsplash Gallary</option>
+          <option value="flickr">Flickr Gallary</option>
+        </select>
+        <label for="img-tag" class="image-tag-label">Tags For Images</label>
+        <input type="text" class="image-tag-input" placeholder="Еnter photo tags" id="img-tag">
+      </div>
+      <h4 class="settings-subtitle widgets">Widgets</h4>
+      <ul class="input-widget-list">
+        <li class="input-widget-item">
+          <input type="checkbox" class="input-checkbox checkbox-time" id="checkbox-time" checked>
+          <label for="checkbox-time" class="input-label-time">Time</label>
+        </li>
+        <li class="input-widget-item">
+          <input type="checkbox" class="input-checkbox checkbox-date" id="checkbox-date" checked>
+          <label for="checkbox-date" class="input-label-date">Date</label>
+        </li>
+        <li class="input-widget-item">
+          <input type="checkbox" class="input-checkbox checkbox-greeting" id="checkbox-greeting" checked>
+          <label for="checkbox-greeting" class="input-label-greeting">Greeting</label>
+        </li>
+        <li class="input-widget-item">
+          <input type="checkbox" class="input-checkbox checkbox-weather" id="checkbox-weather" checked>
+          <label for="checkbox-weather" class="input-label-weather">Weather</label>
+        </li>
+        <li class="input-widget-item">
+          <input type="checkbox" class="input-checkbox checkbox-player" id="checkbox-player" checked>
+          <label for="checkbox-player" class="input-label-player">Audio&nbsp;Player</label>
+        </li>
+        <li class="input-widget-item">
+          <input type="checkbox" class="input-checkbox checkbox-quote" id="checkbox-quote" checked>
+          <label for="checkbox-quote" class="input-label-quote">Quote</label>
+        </li>
+        <li class="input-widget-item">
+          <input type="checkbox" class="input-checkbox checkbox-todo" id="checkbox-todo" checked>
+          <label for="checkbox-todo" class="input-label-todo">ToDo&nbsp;List</label>
+        </li>
+      </ul>       
+    </div>
+    <div class="settings">
+      <button class="settings-button" type="button">
+        <span class="settings-button-title">Settings</span>
+      </button>
+    
+    </div>
+    <div class="footer-center">
+      <div class="quotes">
+        <button class="change-quote"></button>
+        <div>
+          <div class="quote"></div>
+          <div class="author"></div>
+        </div>
+      </div>
+      <ul class="logo-list">
+        <li class="logo-item"><a href="https://github.com/irynahryhoriv" title="GitHub"><img class="socialmedia-icon" src="assets/svg/github.svg" alt="GitHub Logo"></a></li>
+        <li class="logo-item"><a href="https://rs.school/js-stage0/" title="Rolling Scopes School"><img class="socialmedia-icon" src="assets/svg/rsschooljs.svg" alt="Rolling Scopes School Logo"></a></li>
+      </ul>
+    </div>    
+    <div class="todo-container">
+      <button class="todo-button" type="button">
+        <span class="todo-button-title">ToDo List</span>
+      </button>
+    </div>
+    <div class="todolist-container">
+      <h3 class="settings-title">ToDo List</h3>
+      <select class="todo-select">
+        <option value="today" class="todo-select-title">Today</option>
+        <option value="done" class="todo-select-title">Done</option>
+      </select>
+      <ul class="todo-list"></ul>
+      <input type="text" class="todo-new" placeholder="Enter new ToDo">
     </div>
   </footer>
   <script src="js/script.js"></script>
