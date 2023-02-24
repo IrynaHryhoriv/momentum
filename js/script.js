@@ -61,7 +61,7 @@ function getTimeOfDay() {
 }
 
 
-function getRandomIntInclusive(min,max){
+function getRandomIntInclusive(min, max){
     min = Math.ceil(1);
     max = Math.floor(20);
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -256,6 +256,52 @@ getWeather(lang);
 city.addEventListener('change', function () {
    getWeather(lang);
 });
+
+
+
+// 5. quotes
+
+const quoteText = document.querySelector('.quote');
+const quoteAuthor = document.querySelector('.author');
+
+let quoteNum = getRandomIntInclusive(0, 9);
+
+async function getQuotes(lang) {  
+  //const quotes = `quotes_${lang}.json`;
+//    const quotes = `file:///Users/ywko/RS_S/momentum/data.json`;
+//    const res = await fetch(quotes);
+//    console.log(res);
+//    const data = await res.json();
+  if (lang === 'en') {
+    quoteText.textContent = quotes_en.quotes[quoteNum].quote;
+    quoteAuthor.textContent = quotes_en.quotes[quoteNum].author;
+  } else {
+    quoteText.textContent = quotes_ru[quoteNum].text;
+    quoteAuthor.textContent = quotes_ru[quoteNum].author;
+  }
+}
+getQuotes(lang);
+
+const changeQuote = document.querySelector('.change-quote');
+changeQuote.addEventListener('click', function() {
+  let quoteNext = quoteNum;
+  while (quoteNext === quoteNum) {
+    quoteNext = getRandomIntInclusive(0, 9);
+  }
+  quoteNum = quoteNext;
+  getQuotes(lang);
+});
+
+
+
+//6 (7) audioPlayer
+
+
+
+
+
+
+
 
 
 
