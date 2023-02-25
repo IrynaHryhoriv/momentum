@@ -72,7 +72,8 @@ body {
   height: 20px;
   background-size: contain;
   background-position: center;
-  background-image: url("../assets/svg/play.svg");
+  list-style-type: none;
+  /* background-image: url("../assets/svg/play.svg"); */
 }
 
 .item-active::before {
@@ -438,6 +439,7 @@ body {
 
 .todo-button-icon {
   padding-left: 8px;
+  white-space: nowrap;
 }
 
 .todo-button-icon:hover {

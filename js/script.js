@@ -294,7 +294,31 @@ changeQuote.addEventListener('click', function() {
 
 
 
-//6 (7) audioPlayer
+// 6 (7) audioPlayer
+
+
+
+//8. translate
+
+const langSelect = document.getElementById('language-select');
+
+langSelect.addEventListener('change', function() {
+  lang = langSelect.value;
+  showTime(lang);
+  if (lang === 'en') {
+    city.value = 'Minsk';
+    yourName.placeholder = '[enter name]';
+    city.placeholder = 'enter city please';
+    
+  } else {
+    city.value = 'Минск';
+    yourName.placeholder = '[введите имя]';
+    city.placeholder = 'введите город';
+  }
+  loadSettings(lang);
+  getWeather(lang);
+  getQuotes(lang);
+})
 
 
 
@@ -302,9 +326,7 @@ changeQuote.addEventListener('click', function() {
 
 
 
-
-
-// settings
+// 12. settings
 
 const settingsTranslation =
   [
@@ -438,7 +460,7 @@ checkboxTodo.addEventListener('change', function() {
 });
 
 
-// todo list
+//12. todo list
 
 const todoBtn = document.querySelector('.todo-button');
 const todoContainer = document.querySelector('.todolist-container');
