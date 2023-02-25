@@ -304,13 +304,167 @@ changeQuote.addEventListener('click', function() {
 
 
 
+// settings
 
-// function showDate(lang) {
-//     const date = new Date();
-//     const options = {month: 'long', day: 'numeric', weekday: 'long'};
-//     const currentDate = date.toLocaleDateString(lang, options);
-//     dateContainer.textContent = currentDate.charAt(0).toUpperCase() + currentDate.slice(1);
-//   }
+const settingsTranslation =
+  [
+    {
+      'en': 'Settings',
+      'ru': 'Настройки'},
+    {
+      'en': 'Language',
+      'ru': 'Язык'},
+    {
+      'en': 'Photo Gallery',
+      'ru': 'Фото галерея'},
+    {
+      'en': 'Image Source',
+      'ru': 'Источник фото'},
+    {
+      'en': 'Image Tags',
+      'ru': 'Тег фото'},
+    {
+      'en': 'Еnter tag for photo please',
+      'ru': 'Введите тег для фото'},
+    {
+      'en': 'Widgets',
+      'ru': 'Виджеты'},
+    {
+      'en': 'Time',
+      'ru': 'Время'},
+    {
+      'en': 'Date',
+      'ru': 'Дата'},
+    {
+      'en': 'Greeting',
+      'ru': 'Приветствие'},
+    {
+      'en': 'Weather',
+      'ru': 'Погода'},
+    {
+      'en': 'Audio Player',
+      'ru': 'Плеер'},
+    {
+      'en': 'Quote',
+      'ru': 'Цитата'},
+    {
+      'en': 'ToDo List',
+      'ru': 'Список дел'},
+]
+
+const settingsTitle = document.querySelector('.settings-title');
+const settingsLang = document.querySelector('.language-label');
+const photoGallary = document.querySelector('.photo-gallary');
+const imageSource = document.querySelector('.image-source-label');
+const imageTag = document.querySelector('.image-tag-label');
+const imageTagInput = document.querySelector('.image-tag-input');
+const widgets = document.querySelector('.widgets');
+const labelTime = document.querySelector('.input-label-time');
+const labelDate = document.querySelector('.input-label-date');
+const labelGreeting = document.querySelector('.input-label-greeting');
+const labelWeather = document.querySelector('.input-label-weather');
+const labelPlayer = document.querySelector('.input-label-player');
+const labelQuote = document.querySelector('.input-label-quote');
+const labelTodo = document.querySelector('.input-label-todo');
+
+const btnSettingsTitle = document.querySelector('.settings-button-title');
+const btnTodoTitle = document.querySelector('.todo-button-title');
+
+function loadSettings(lang) {
+  settingsTitle.textContent = settingsTranslation[0][lang];
+  settingsLang.textContent = settingsTranslation[1][lang];
+  photoGallary.textContent = settingsTranslation[2][lang];
+  imageSource.textContent = settingsTranslation[3][lang];
+  imageTag.textContent = settingsTranslation[4][lang];
+  imageTagInput.placeholder = settingsTranslation[5][lang];
+  widgets.textContent = settingsTranslation[6][lang];
+  labelTime.textContent = settingsTranslation[7][lang];
+  labelDate.textContent = settingsTranslation[8][lang];
+  labelGreeting.textContent = settingsTranslation[9][lang];
+  labelWeather.textContent = settingsTranslation[10][lang];
+  labelPlayer.textContent = settingsTranslation[11][lang];
+  labelQuote.textContent = settingsTranslation[12][lang];
+  labelTodo.textContent = settingsTranslation[13][lang];
+  btnSettingsTitle.textContent = settingsTranslation[0][lang];
+  btnTodoTitle.textContent = settingsTranslation[13][lang];
+}
+
+const settingsBtn = document.querySelector('.settings-button');
+const settingsContainer = document.querySelector('.settings-container');
+
+settingsBtn.addEventListener('click', function() {
+  settingsContainer.classList.toggle('active');
+});
+
+const checkboxTime = document.getElementById('checkbox-time');
+const checkboxDate = document.getElementById('checkbox-date');
+const checkboxGreeting = document.getElementById('checkbox-greeting');
+const checkboxWeather = document.getElementById('checkbox-weather');
+const checkboxPlayer = document.getElementById('checkbox-player');
+const checkboxQuote = document.getElementById('checkbox-quote');
+const checkboxTodo = document.getElementById('checkbox-todo');
+
+const greetingContainer = document.querySelector('.greeting-container');
+const weatherContainer = document.querySelector('.weather');
+const audioPlayer = document.querySelector('.player');
+const quotesContainer = document.querySelector('.quotes');
+
+checkboxTime.addEventListener('change', function() {
+  checkboxTime.checked ? time.style.opacity = '1' : time.style.opacity = '0';
+});
+checkboxDate.addEventListener('change', function() {
+  checkboxDate.checked ? dateContainer.style.opacity = '1' : dateContainer.style.opacity = '0';
+});
+checkboxGreeting.addEventListener('change', function() {
+  checkboxGreeting.checked ? greetingContainer.style.opacity = '1' : greetingContainer.style.opacity = '0';
+});
+checkboxWeather.addEventListener('change', function() {
+  checkboxWeather.checked ? weatherContainer.style.opacity = '1' : weatherContainer.style.opacity = '0';
+});
+checkboxPlayer.addEventListener('change', function() {
+  checkboxPlayer.checked ? audioPlayer.style.opacity = '1' : audioPlayer.style.opacity = '0';
+});
+checkboxQuote.addEventListener('change', function() {
+  checkboxQuote.checked ? quotesContainer.style.opacity = '1' : quotesContainer.style.opacity = '0';
+});
+checkboxTodo.addEventListener('change', function() {
+  if (checkboxTodo.checked) {
+    todoBtn.style.opacity = '1';
+    todoContainer.style.opacity = '1';
+  } else {
+    todoBtn.style.opacity = '0';
+    todoContainer.style.opacity = '0';
+  }
+});
 
 
+// todo list
 
+const todoBtn = document.querySelector('.todo-button');
+const todoContainer = document.querySelector('.todolist-container');
+
+todoBtn.addEventListener('click', function() {
+  todoContainer.classList.toggle('active');
+});
+
+const arrTodoItems = [];
+const newTodo = document.querySelector('.todo-new');
+const listTodo = document.querySelector('.todo-list');
+
+newTodo.addEventListener('change', function() {
+  arrTodoItems.push(newTodo.value);
+  const li = document.createElement('li');
+  const label = document.createElement('label');
+  const input = document.createElement('input');
+
+  input.type = 'checkbox';
+  input.id = newTodo.value;
+
+  label.classList.add('todo-item-label');
+  label.innerHTML = newTodo.value;
+  label.htmlFor = newTodo.value;
+
+  li.append(input)
+  li.append(label)
+  listTodo.append(li);
+});
