@@ -1,4 +1,5 @@
 let randomNum = getRandomIntInclusive();
+let lang = "en";
 // time and greeting
 
 const dateContainer = document.getElementById("date");
@@ -30,9 +31,8 @@ function displayDate() {
 
 
     if (lang === 'en'){
-
       dateContainer.innerHTML = `${day}, ${month} ${numDayOfMonth}`;
-    }else{
+    } else{
       dateContainer.innerHTML = `${dayRU}, ${monthRU} ${numDayOfMonth}`;
   
     }
@@ -60,17 +60,18 @@ window.addEventListener('load', getLocalStorageName);
 
 // slider
 
-function getTimeOfDay() {
+function getTimeOfDay(lang) {
     const date = new Date();
     const hours = date.getHours();
+  
     if (hours > 0 && hours < 12) {
-        return 'morning';
+        return lang === 'en' ? 'morning' : 'утро';
     }
-    else if (hours >= 12 && hours <= 16) {
-        return 'afternoon';
+    else if (hours >= 12 && hours < 18) {
+        return lang === 'en' ? 'afternoon' : 'день';
     }
-    else if (hours >= 17 && hours <= 24) {
-        return 'evening';
+    else if (hours >= 18 && hours <= 24) {
+        return lang === 'en'? 'evening' : 'вечер';
     }
 }
 
@@ -116,7 +117,7 @@ function getBgNumber(currentNumber) {
 }
 
 function setBg() {   
-    const timeOfDay = getTimeOfDay();
+    const timeOfDay = getTimeOfDay(lang);
 
     const img = new Image();
     var imgSrc = `https://raw.githubusercontent.com/IrynaHryhoriv/momentum_photos/master/images/${timeOfDay}/${getBgNumber(randomNum)}.jpg`;
@@ -127,7 +128,7 @@ function setBg() {
         document.body.style.backgroundImage = imgStyle;
     }
 }
-  setBg();
+setBg();
 
 //   async function getLinkFromUnsplash() {
    
@@ -178,8 +179,26 @@ const arrowNext = document.querySelector('.slide-next');
 
 
 
-document.getElementById("greeting").innerHTML = `Good ${getTimeOfDay()}, `;
-setBg();
+
+
+
+
+
+function displayGreeting(lang) {
+  let timeOfDay = getTimeOfDay(lang);
+  let ruGreetings = (lang === 'ru' && timeOfDay === 'утро') ? 'Доброе' : 'Добрый';
+  let enGreetings = 'Good'
+
+  let greetings = lang === 'en' ? enGreetings : ruGreetings;
+  document.getElementById("greeting").innerHTML = `${greetings} ${timeOfDay}, `;
+}
+displayGreeting(lang);
+
+
+  
+
+
+
 arrowPrev.addEventListener('click', getSlidePrev);
 arrowNext.addEventListener('click', getSlideNext);
 
@@ -189,7 +208,6 @@ arrowNext.addEventListener('click', getSlideNext);
 
  const city = document.querySelector('.city');
  let url;
- let lang = "en";
  city.value = 'Minsk';
 
 
@@ -309,9 +327,6 @@ changeQuote.addEventListener('click', function() {
 
 
 
-
-
-
 // 6 (7) audioPlayer
 
 
@@ -335,13 +350,13 @@ let isPlay = false;
 const audio = new Audio();
 
 function playAudio() {
-  audio.src = playList[playNum].src;
+  audio.src = playList[playNum+1].src;
   play.classList.toggle('pause');
-  musicTrack[playNum].classList.toggle('item-active');
+  musicTrack[playNum+1].classList.toggle('item-active');
   if (!isPlay) {
     audio.currentTime = 0;
     audio.play();
-    currentTrackTitle.textContent = playList[playNum].title;
+    currentTrackTitle.textContent = playList[playNum+1].title;
     isPlay = true;
   } else {
     audio.pause();
@@ -351,7 +366,7 @@ function playAudio() {
 play.addEventListener('click', playAudio);
 
 playPrev.addEventListener('click', function() {
-  musicTrack[playNum].classList.remove('item-active');
+  musicTrack[playNum+1].classList.remove('item-active');
   playNum === 0 ? playNum = playList.length - 1 : playNum--;
   isPlay = false;
   play.classList.remove('pause');
@@ -359,7 +374,7 @@ playPrev.addEventListener('click', function() {
 });
 
 function nextTrack() {
-  musicTrack[playNum].classList.remove('item-active');
+  musicTrack[playNum+1].classList.remove('item-active');
   playNum === playList.length - 1 ? playNum = 0 : playNum++;
   isPlay = false;
   play.classList.remove('pause');
@@ -452,6 +467,7 @@ langSelect.addEventListener('change', function() {
   loadSettings(lang);
   getWeather(lang);
   getQuotes(lang);
+  displayGreeting(lang);
 })
 
 
