@@ -165,7 +165,7 @@ const arrowNext = document.querySelector('.slide-next');
 
 
 
-document.getElementById("greeting").innerHTML = `Good ${getTimeOfDay()}`;
+document.getElementById("greeting").innerHTML = `Good ${getTimeOfDay()}, `;
 setBg();
 arrowPrev.addEventListener('click', getSlidePrev);
 arrowNext.addEventListener('click', getSlideNext);
