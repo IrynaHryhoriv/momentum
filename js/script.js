@@ -1,4 +1,4 @@
-
+let randomNum = getRandomIntInclusive();
 // time and greeting
 
 const dateContainer = document.getElementById("date");
@@ -50,7 +50,7 @@ window.addEventListener('load', getLocalStorageName);
 function getTimeOfDay() {
     const date = new Date();
     const hours = date.getHours();
-    if (hours > 4 && hours < 12) {
+    if (hours > 0 && hours < 12) {
         return 'morning';
     }
     else if (hours >= 12 && hours <= 16) {
@@ -114,7 +114,8 @@ function setBg() {
         document.body.style.backgroundImage = imgStyle;
     }
 }
-  
+  setBg();
+
 //   async function getLinkFromUnsplash() {
    
 //     if (imgTag.value.length === 0) {
@@ -161,10 +162,10 @@ function getSlideNext() {
 
 const arrowPrev = document.querySelector('.slide-prev');
 const arrowNext = document.querySelector('.slide-next');
-let randomNum = getRandomIntInclusive();
 
 
-document.getElementById("greeting").innerHTML = `Good ${getTimeOfDay()},`;
+
+document.getElementById("greeting").innerHTML = `Good ${getTimeOfDay()}`;
 setBg();
 arrowPrev.addEventListener('click', getSlidePrev);
 arrowNext.addEventListener('click', getSlideNext);
@@ -300,6 +301,7 @@ changeQuote.addEventListener('click', function() {
 
 // 6 (7) audioPlayer
 
+
 const playListContainer = document.querySelector('.play-list');
 playList.forEach(el => {
   const li = document.createElement('li');
@@ -308,32 +310,32 @@ playList.forEach(el => {
   playListContainer.append(li);
 });
 
-const play = document.querySelector('.play');
-const playPrev = document.querySelector('.play-prev');
-const playNext = document.querySelector('.play-next');
-const musicTrack = playListContainer.childNodes;
-const currentTrackTitle = document.querySelector('.current-track-title');
+// const play = document.querySelector('.play');
+// const playPrev = document.querySelector('.play-prev');
+// const playNext = document.querySelector('.play-next');
+// const musicTrack = playListContainer.childNodes;
+// const currentTrackTitle = document.querySelector('.current-track-title');
 
-let playNum = 0;
-currentTrackTitle.textContent = playList[playNum].title;
-let isPlay = false;
-const audio = new Audio();
+// let playNum = 0;
+// currentTrackTitle.textContent = playList[playNum].title;
+// let isPlay = false;
+// const audio = new Audio();
 
-function playAudio() {
-  audio.src = playList[playNum+1].src;
-  play.classList.toggle('pause');
-  musicTrack[playNum+1].classList.toggle('item-active');
-  if (!isPlay) {
-    audio.currentTime = 0;
-    audio.play();
-    currentTrackTitle.textContent = playList[playNum].title;
-    isPlay = true;
-  } else {
-    audio.pause();
-    isPlay = false;
-  }
-}
-play.addEventListener('click', playAudio);
+// function playAudio() {
+//   audio.src = playList[playNum].src;
+//   play.classList.toggle('pause');
+//   musicTrack[playNum].classList.toggle('item-active');
+//   if (!isPlay) {
+//     audio.currentTime = 0;
+//     audio.play();
+//     currentTrackTitle.textContent = playList[playNum].title;
+//     isPlay = true;
+//   } else {
+//     audio.pause();
+//     isPlay = false;
+//   }
+// }
+// play.addEventListener('click', playAudio);
 
 // playPrev.addEventListener('click', function() {
 //   musicTrack[playNum].classList.remove('item-active');
