@@ -22,10 +22,23 @@ function displayDate() {
     let day = weekday[d.getDay()];
     var month = monthOftheYear[d.getMonth()];
     var numDayOfMonth = d.getDate();
+    const weekdayRU = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота" ]
+    const monthOftheYearRU = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
+    var dRU = new Date ();
+    let dayRU = weekdayRU[dRU.getDay()];
+    var monthRU = monthOftheYearRU[dRU.getMonth()];
 
-    dateContainer.innerHTML = `${day}, ${month} ${numDayOfMonth}`;
+
+    if (lang === 'en'){
+
+      dateContainer.innerHTML = `${day}, ${month} ${numDayOfMonth}`;
+    }else{
+      dateContainer.innerHTML = `${dayRU}, ${monthRU} ${numDayOfMonth}`;
+  
+    }
 }
 setInterval(displayDate, 1000);
+
 
 
 // enter name
@@ -165,7 +178,7 @@ const arrowNext = document.querySelector('.slide-next');
 
 
 
-document.getElementById("greeting").innerHTML = `Good ${getTimeOfDay()}`;
+document.getElementById("greeting").innerHTML = `Good ${getTimeOfDay()}, `;
 setBg();
 arrowPrev.addEventListener('click', getSlidePrev);
 arrowNext.addEventListener('click', getSlideNext);
